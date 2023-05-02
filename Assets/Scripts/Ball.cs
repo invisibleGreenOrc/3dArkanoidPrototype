@@ -1,18 +1,16 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Arcanoid
 {
-    public class BallController : MonoBehaviour
+    public class Ball : MonoBehaviour
     {
         [SerializeField]
         private float _speed;
 
-        private Vector3 _velocity;
+        public Vector3 Velocity { get; set; }
 
-        private void Awake()
-        {
-            _velocity = _speed * new Vector3 (0.1f, 0.2f, 1f);
-        }
+        public event Action LeftPlayground;
 
         private void Update()
         {
@@ -24,14 +22,19 @@ namespace Arcanoid
             Bounce(collision.GetContact(0).normal);
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            LeftPlayground?.Invoke();
+        }
+
         private void Move()
         {
-            transform.position += Time.deltaTime * _velocity;
+            transform.position += _speed * Time.deltaTime * Velocity;
         }
 
         private void Bounce(Vector3 collisionNormal)
         {
-            _velocity = Vector3.Reflect(_velocity, collisionNormal);
+            Velocity = Vector3.Reflect(Velocity, collisionNormal);
         }
     }
 }
