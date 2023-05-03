@@ -34,7 +34,9 @@ namespace Arcanoid
                 return;
             }
 
-            transform.position += _speed * Time.deltaTime * new Vector3(-_moveDirection.x, _moveDirection.y, 0);
+            var newPosition = transform.position + _speed * Time.deltaTime * new Vector3(_moveDirection.x * transform.right.x, _moveDirection.y, 0);
+
+            transform.position = new Vector3(Mathf.Clamp(newPosition.x, -4, 4), Mathf.Clamp(newPosition.y, -4.5f, 4.5f), newPosition.z);
         }
     }
 }

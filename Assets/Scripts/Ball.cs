@@ -6,11 +6,28 @@ namespace Arcanoid
     public class Ball : MonoBehaviour
     {
         [SerializeField]
+        private float _startSpeed;
+        
         private float _speed;
 
         public Vector3 Velocity { get; set; }
 
         public event Action LeftPlayground;
+
+        public void ChangeSpeed(float deltaSpeed)
+        {
+            _speed += deltaSpeed;
+        }
+
+        public void SetSpeedToStartValue()
+        {
+            _speed = _startSpeed;
+        }
+
+        private void Start()
+        {
+            SetSpeedToStartValue();
+        }
 
         private void Update()
         {

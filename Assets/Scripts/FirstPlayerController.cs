@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Arcanoid
 {
@@ -11,6 +12,8 @@ namespace Arcanoid
         private float _speed;
 
         private Vector2 _moveDirection;
+
+        public event Action ReleaseBall;
 
         private void Start()
         {
@@ -30,7 +33,7 @@ namespace Arcanoid
 
         private void HandleReleaseBall()
         {
-            
+            ReleaseBall?.Invoke();
         }
 
         private void Move()
@@ -39,8 +42,10 @@ namespace Arcanoid
             {
                 return;
             }
+            
+            var newPosition = transform.position + _speed * Time.deltaTime * new Vector3(_moveDirection.x, _moveDirection.y, 0);
 
-            transform.position += _speed * Time.deltaTime * new Vector3(_moveDirection.x, _moveDirection.y, 0);
+            transform.position = new Vector3(Mathf.Clamp(newPosition.x, -4, 4), Mathf.Clamp(newPosition.y, -4.5f, 4.5f), newPosition.z);
         }
     }
 }
