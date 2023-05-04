@@ -1,38 +1,43 @@
-﻿using System;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
-namespace Arcanoid
+namespace Arkanoid
 {
     public class Game : MonoBehaviour
     {
         [SerializeField]
-        private Ball _ballPrefab;
+        private GameData _gameData;
         
         private Ball _ball;
 
         [SerializeField]
-        private FirstPlayerController _mainPlayer;
+        private ScriptableObject _releaseBallInputReader;
+
+        private IReleaseBallInputReader _releaseBallInput;
 
         [SerializeField]
-        private int _health = 3;
+        private Transform _mainPlayerTransform;
 
-        private Vector3 _offset = new(0f, 0f, 2f);
-
-        private Vector3 _ballStartVelocity = new(0.1f, 0.2f, 1f);
+        private int _health;
 
         [SerializeField]
         private CubeSpawner _cubeSpawner;
 
         private void Start()
         {
-            _ball = Instantiate(_ballPrefab, _mainPlayer.transform.position + _offset, Quaternion.identity);
+            _releaseBallInput = _releaseBallInputReader as IReleaseBallInputReader;
+
+            _releaseBallInput.ReleaseBallInputPerformed += OnReleaseBall;
+
+            _health = _gameData.StartHealth;
+
+            _cubeSpawner.CubeSpawned += OnCubeSpawned;
+
+            _ball = Instantiate(_gameData.BallPrefab);
+            _ball.Init(_gameData.BallStartSpeed, _gameData.BallMaxSpeed);
             MoveBallToStartPosition();
 
             _ball.LeftPlayground += OnBallLeftPlayground;
-            _mainPlayer.ReleaseBall += OnReleaseBall;
-
-            _cubeSpawner.CubeSpawned += OnCubeSpawned;
         }
 
         private void OnCubeSpawned(Cube cube)
@@ -44,19 +49,19 @@ namespace Arcanoid
         {
             cube.CubeDestroying -= OnCubeDestroying;
 
-            _ball.ChangeSpeed(0.5f);
+            _ball.ChangeSpeed(_gameData.BallSpeedIncreaseStep);
         }
 
         private void OnReleaseBall()
         {
             _ball.transform.SetParent(null);
-            _ball.Velocity = _ballStartVelocity;
+            _ball.StartMoving();
         }
 
         private void OnBallLeftPlayground()
         {
             MoveBallToStartPosition();
-            _ball.SetSpeedToStartValue();
+            
             DecreaseHealth();
 
             Debug.Log($"Health left: {_health}");
@@ -64,9 +69,11 @@ namespace Arcanoid
 
         private void MoveBallToStartPosition()
         {
-            _ball.transform.position = _mainPlayer.transform.position + _offset;
-            _ball.transform.SetParent(_mainPlayer.transform, true);
-            _ball.Velocity = Vector3.zero;
+            _ball.transform.position = _mainPlayerTransform.position + _gameData.BallSpawnPositionOffset;
+            _ball.transform.SetParent(_mainPlayerTransform, true);
+            
+            _ball.StopMoving();
+            _ball.SetSpeedToStartValue();
         }
 
         private void DecreaseHealth()

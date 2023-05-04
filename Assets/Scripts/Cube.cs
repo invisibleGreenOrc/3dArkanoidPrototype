@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Arcanoid
+namespace Arkanoid
 {
     public class Cube : MonoBehaviour
     {

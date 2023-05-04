@@ -1,22 +1,31 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Arcanoid
+namespace Arkanoid
 {
     public class Ball : MonoBehaviour
     {
-        [SerializeField]
         private float _startSpeed;
         
         private float _speed;
 
-        public Vector3 Velocity { get; set; }
+        private float _maxSpeed;
+
+        private Vector3 _moveDirection;
 
         public event Action LeftPlayground;
 
+        public void Init(float startSpeed, float maxSpeed)
+        {
+            _startSpeed = startSpeed;
+            _maxSpeed = maxSpeed;
+
+            SetSpeedToStartValue();
+        }
+
         public void ChangeSpeed(float deltaSpeed)
         {
-            _speed += deltaSpeed;
+            _speed = Mathf.Clamp(_speed + deltaSpeed, 0, _maxSpeed);
         }
 
         public void SetSpeedToStartValue()
@@ -24,9 +33,14 @@ namespace Arcanoid
             _speed = _startSpeed;
         }
 
-        private void Start()
+        public void StartMoving()
         {
-            SetSpeedToStartValue();
+            _moveDirection = transform.forward;
+        }
+
+        public void StopMoving()
+        {
+            _moveDirection = Vector3.zero;
         }
 
         private void Update()
@@ -46,12 +60,17 @@ namespace Arcanoid
 
         private void Move()
         {
-            transform.position += _speed * Time.deltaTime * Velocity;
+            if (_moveDirection == Vector3.zero)
+            {
+                return;
+            }
+
+            transform.position += _speed * Time.deltaTime * _moveDirection;
         }
 
         private void Bounce(Vector3 collisionNormal)
         {
-            Velocity = Vector3.Reflect(Velocity, collisionNormal);
+            _moveDirection = Vector3.Reflect(_moveDirection, collisionNormal);
         }
     }
 }
