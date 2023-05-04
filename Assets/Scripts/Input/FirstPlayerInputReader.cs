@@ -1,18 +1,18 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static Arcanoid.GameInput;
+using static Arkanoid.GameInput;
 
-namespace Arcanoid
+namespace Arkanoid
 {
     [CreateAssetMenu(menuName = "FirstPlayerInputReader")]
-    public class FirstPlayerInputReader : ScriptableObject, IFirstPlayerGameplayActions
+    public class FirstPlayerInputReader : ScriptableObject, IFirstPlayerGameplayActions, IMoveInputReader, IReleaseBallInputReader
     {
         private GameInput _gameInput;
 
-        public event Action<Vector2> MoveEvent;
+        public event Action ReleaseBallInputPerformed;
 
-        public event Action ReleaseBallEvent;
+        public event Action<Vector2> MoveInputChanged;
 
         private void OnEnable()
         {
@@ -33,14 +33,14 @@ namespace Arcanoid
 
         public void OnMove(InputAction.CallbackContext context)
         {
-            MoveEvent?.Invoke(context.ReadValue<Vector2>());
+            MoveInputChanged?.Invoke(context.ReadValue<Vector2>());
         }
 
         public void OnReleaseBall(InputAction.CallbackContext context)
         {
             if (context.phase == InputActionPhase.Performed)
             {
-                ReleaseBallEvent?.Invoke();
+                ReleaseBallInputPerformed?.Invoke();
             }
         }
     }

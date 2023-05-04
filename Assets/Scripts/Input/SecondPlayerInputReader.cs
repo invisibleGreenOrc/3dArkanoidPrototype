@@ -1,16 +1,16 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static Arcanoid.GameInput;
+using static Arkanoid.GameInput;
 
-namespace Arcanoid
+namespace Arkanoid
 {
     [CreateAssetMenu(menuName = "SecondPlayerInputReader")]
-    public class SecondPlayerInputReader : ScriptableObject, ISecondPlayerGameplayActions
+    public class SecondPlayerInputReader : ScriptableObject, ISecondPlayerGameplayActions, IMoveInputReader
     {
         private GameInput _gameInput;
 
-        public event Action<Vector2> MoveEvent;
+        public event Action<Vector2> MoveInputChanged;
 
         private void OnEnable()
         {
@@ -31,7 +31,7 @@ namespace Arcanoid
 
         public void OnMove(InputAction.CallbackContext context)
         {
-            MoveEvent?.Invoke(context.ReadValue<Vector2>());
+            MoveInputChanged?.Invoke(context.ReadValue<Vector2>());
         }
     }
 }
