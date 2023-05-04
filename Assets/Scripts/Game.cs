@@ -21,7 +21,7 @@ namespace Arkanoid
         private int _health;
 
         [SerializeField]
-        private CubeSpawner _cubeSpawner;
+        private BlockSpawner _cubeSpawner;
 
         private void Start()
         {
@@ -31,7 +31,7 @@ namespace Arkanoid
 
             _health = _gameData.StartHealth;
 
-            _cubeSpawner.CubeSpawned += OnCubeSpawned;
+            _cubeSpawner.BlockSpawned += OnCubeSpawned;
 
             _ball = Instantiate(_gameData.BallPrefab);
             _ball.Init(_gameData.BallStartSpeed, _gameData.BallMaxSpeed);
@@ -40,14 +40,14 @@ namespace Arkanoid
             _ball.LeftPlayground += OnBallLeftPlayground;
         }
 
-        private void OnCubeSpawned(Cube cube)
+        private void OnCubeSpawned(Block cube)
         {
-            cube.CubeDestroying += OnCubeDestroying;
+            cube.BlockDestroying += OnCubeDestroying;
         }
 
-        private void OnCubeDestroying(Cube cube)
+        private void OnCubeDestroying(Block cube)
         {
-            cube.CubeDestroying -= OnCubeDestroying;
+            cube.BlockDestroying -= OnCubeDestroying;
 
             _ball.ChangeSpeed(_gameData.BallSpeedIncreaseStep);
         }

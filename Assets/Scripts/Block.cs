@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace Arkanoid
 {
-    public class Cube : MonoBehaviour
+    public class Block : MonoBehaviour
     {
-        public event Action<Cube> CubeDestroying;
+        public event Action<Block> BlockDestroying;
 
         private void OnCollisionEnter(Collision collision)
         {
-            CubeDestroying?.Invoke(this);
+            BlockDestroying?.Invoke(this);
             Destroy(gameObject);
         }
     }
