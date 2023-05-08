@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cb2f570c2fbb6142a37f37288018e53, type: 3}
   m_Name: GameData
   m_EditorClassIdentifier: 
-  <BallStartSpeed>k__BackingField: 5
+  <BallStartSpeed>k__BackingField: 3
   <BallSpeedIncreaseStep>k__BackingField: 0.5
   <BallMaxSpeed>k__BackingField: 8
   <BallSpawnPositionOffset>k__BackingField: {x: 0, y: 0, z: 1.2}

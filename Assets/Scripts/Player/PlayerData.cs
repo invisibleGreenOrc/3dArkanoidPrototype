@@ -6,7 +6,7 @@ namespace Arkanoid
     public class PlayerData : ScriptableObject
     {
         [field: SerializeField]
-        public float Speed { get; set; }
+        public float Acceleration { get; set; }
 
         [field: SerializeField]
         public float ClampX { get; set; }

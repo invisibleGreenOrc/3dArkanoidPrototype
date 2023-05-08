@@ -12,12 +12,15 @@ namespace Arkanoid
 
         private IMoveInputReader _input;
 
-        private Vector2 _moveDirection;
+        private Vector3 _accelerationDirection;
+
+        private Rigidbody _physicsBody;
 
         private void Start()
         {
             _input = _moveInputReader as IMoveInputReader;
             _input.MoveInputChanged += OnMoveInputChanged;
+            _physicsBody = GetComponent<Rigidbody>();
         }
 
         private void Update()
@@ -27,21 +30,18 @@ namespace Arkanoid
 
         private void OnMoveInputChanged(Vector2 direction)
         {
-            _moveDirection = direction;
+            _accelerationDirection = new Vector3(direction.x * transform.right.x, direction.y * transform.up.y, 0);
         }
 
         private void Move()
         {
-            if (_moveDirection == Vector2.zero)
+            if (_accelerationDirection == Vector3.zero)
             {
-                return;
+                var brakingDirection = -_physicsBody.velocity.normalized;
+                _physicsBody.AddForce(_playerData.Acceleration * brakingDirection, ForceMode.Acceleration);
             }
 
-            var newPosition = transform.position + _playerData.Speed * Time.deltaTime * new Vector3(_moveDirection.x * transform.right.x, _moveDirection.y * transform.up.y, 0);
-
-            transform.position = new Vector3(Mathf.Clamp(newPosition.x, -_playerData.ClampX, _playerData.ClampX),
-                                             Mathf.Clamp(newPosition.y, -_playerData.ClampY, _playerData.ClampY),
-                                             newPosition.z);
+            _physicsBody.AddForce(_playerData.Acceleration * _accelerationDirection, ForceMode.Acceleration);
         }
     }
 }
