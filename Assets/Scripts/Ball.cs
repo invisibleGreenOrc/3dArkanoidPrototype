@@ -1,5 +1,7 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
+using static UnityEngine.UI.Button;
 
 namespace Arkanoid
 {
