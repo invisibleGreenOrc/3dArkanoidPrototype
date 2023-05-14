@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 5495a6a3a5ada7c408e1a6ea04499792, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -839,6 +839,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7521319533431066812, guid: ca07154446abafd49a58239911da7544, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7521319533431066812, guid: ca07154446abafd49a58239911da7544, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7521319533431066812, guid: ca07154446abafd49a58239911da7544, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1547345483}
+    - target: {fileID: 7521319533431066812, guid: ca07154446abafd49a58239911da7544, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7521319533431066812, guid: ca07154446abafd49a58239911da7544, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResumeGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 7521319533431066812, guid: ca07154446abafd49a58239911da7544, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Arkanoid.InGameMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7521319533431066812, guid: ca07154446abafd49a58239911da7544, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7521319534629883959, guid: ca07154446abafd49a58239911da7544, type: 3}
       propertyPath: m_text
       value: resume
@@ -868,6 +896,7 @@ GameObject:
   m_Component:
   - component: {fileID: 794776809}
   - component: {fileID: 794776808}
+  - component: {fileID: 794776810}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -906,6 +935,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &794776810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794776807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dad47e5bc4ddf604894a9982a8f0d9b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &879124832
 GameObject:
   m_ObjectHideFlags: 0
@@ -1176,6 +1217,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7521319533431066812, guid: ca07154446abafd49a58239911da7544, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7521319533431066812, guid: ca07154446abafd49a58239911da7544, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7521319533431066812, guid: ca07154446abafd49a58239911da7544, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1547345483}
+    - target: {fileID: 7521319533431066812, guid: ca07154446abafd49a58239911da7544, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7521319533431066812, guid: ca07154446abafd49a58239911da7544, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Exit
+      objectReference: {fileID: 0}
+    - target: {fileID: 7521319533431066812, guid: ca07154446abafd49a58239911da7544, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Arkanoid.InGameMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7521319533431066812, guid: ca07154446abafd49a58239911da7544, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7521319534629883959, guid: ca07154446abafd49a58239911da7544, type: 3}
       propertyPath: m_text
       value: Exit
@@ -1440,6 +1509,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1547345481}
   - component: {fileID: 1547345482}
+  - component: {fileID: 1547345483}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -1479,6 +1549,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1547345480}
   m_CullTransparentMesh: 1
+--- !u!114 &1547345483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547345480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ab13d8fa2865254d943857d3f9de552, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _game: {fileID: 794776808}
 --- !u!1 &1592803013
 GameObject:
   m_ObjectHideFlags: 0
@@ -1775,6 +1858,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4eebc1cb8944824897e996d56ee258c, type: 3}
+--- !u!114 &1944373970 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 375905454624456686, guid: f4eebc1cb8944824897e996d56ee258c, type: 3}
+  m_PrefabInstance: {fileID: 1944373969}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1944373971 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1415201215479497973, guid: f4eebc1cb8944824897e996d56ee258c, type: 3}
+  m_PrefabInstance: {fileID: 1944373969}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1944373972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944373971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c0d246c9e03b1b469d21e4bdbd6fce1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthAmountText: {fileID: 1944373970}
+  _game: {fileID: 794776808}
 --- !u!1 &1981924582
 GameObject:
   m_ObjectHideFlags: 0
@@ -1967,6 +2080,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7521319533431066812, guid: ca07154446abafd49a58239911da7544, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7521319533431066812, guid: ca07154446abafd49a58239911da7544, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7521319533431066812, guid: ca07154446abafd49a58239911da7544, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1547345483}
+    - target: {fileID: 7521319533431066812, guid: ca07154446abafd49a58239911da7544, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7521319533431066812, guid: ca07154446abafd49a58239911da7544, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7521319533431066812, guid: ca07154446abafd49a58239911da7544, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Arkanoid.InGameMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7521319533431066812, guid: ca07154446abafd49a58239911da7544, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7521319534629883959, guid: ca07154446abafd49a58239911da7544, type: 3}
       propertyPath: m_text
       value: restart
@@ -2091,3 +2232,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4eebc1cb8944824897e996d56ee258c, type: 3}
+--- !u!114 &7171439211366038467 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 375905454624456686, guid: f4eebc1cb8944824897e996d56ee258c, type: 3}
+  m_PrefabInstance: {fileID: 7171439211366038466}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &7171439211366038468 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1415201215479497973, guid: f4eebc1cb8944824897e996d56ee258c, type: 3}
+  m_PrefabInstance: {fileID: 7171439211366038466}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7171439211366038469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7171439211366038468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c0d246c9e03b1b469d21e4bdbd6fce1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthAmountText: {fileID: 7171439211366038467}
+  _game: {fileID: 794776808}

@@ -43,5 +43,10 @@ namespace Arkanoid
 
             _physicsBody.AddForce(_playerData.Acceleration * _accelerationDirection, ForceMode.Acceleration);
         }
+
+        private void OnDestroy()
+        {
+            _input.MoveInputChanged -= OnMoveInputChanged;
+        }
     }
 }
