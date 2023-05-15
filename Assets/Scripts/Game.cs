@@ -7,6 +7,8 @@ namespace Arkanoid
 {
     public class Game : MonoBehaviour
     {
+        private const string MenuSceneName = "Menu";
+
         [SerializeField]
         private GameData _gameData;
         
@@ -18,6 +20,11 @@ namespace Arkanoid
         private IReleaseBallInputReader _releaseBallInput;
 
         [SerializeField]
+        private ScriptableObject _pauseGameInputReader;
+
+        private IPauseGameInputReader _pauseGameInput;
+
+        [SerializeField]
         private Transform _mainPlayerTransform;
 
         private int _health;
@@ -26,6 +33,8 @@ namespace Arkanoid
         private BlockSpawner _cubeSpawner;
 
         private SceneLoader _sceneLoader;
+
+        private MenuController _menuController;
 
         public event Action HealthAmountChanged;
 
@@ -48,13 +57,16 @@ namespace Arkanoid
 
         public void Exit()
         {
-            EditorApplication.isPaused = true;
+            _sceneLoader.LoadScene(MenuSceneName);
         }
 
         private void OnEnable()
         {
             _releaseBallInput = _releaseBallInputReader as IReleaseBallInputReader;
             _releaseBallInput.ReleaseBallInputPerformed += OnReleaseBall;
+
+            _pauseGameInput = _pauseGameInputReader as IPauseGameInputReader;
+            _pauseGameInput.PauseGameInputPerformed += OnPauseGame;
 
             _health = _gameData.StartHealth;
 
@@ -70,11 +82,14 @@ namespace Arkanoid
             _ball.LeftPlayground += OnBallLeftPlayground;
 
             _sceneLoader = GetComponent<SceneLoader>();
+            _menuController = GetComponent<MenuController>();
+            _menuController.Game = this;
         }
 
         private void OnDestroy()
         {
             _releaseBallInput.ReleaseBallInputPerformed -= OnReleaseBall;
+            _pauseGameInput.PauseGameInputPerformed -= OnPauseGame;
         }
 
         private void OnCubeSpawned(Block cube)
@@ -93,6 +108,11 @@ namespace Arkanoid
         {
             _ball.transform.SetParent(null);
             _ball.StartMoving();
+        }
+
+        private void OnPauseGame()
+        {
+            _menuController.ShowInGameMenu();
         }
 
         private void OnBallLeftPlayground()

@@ -12,6 +12,11 @@ namespace Arkanoid
 
         public event Action<Vector2> MoveInputChanged;
 
+        public void OnMove(InputAction.CallbackContext context)
+        {
+            MoveInputChanged?.Invoke(context.ReadValue<Vector2>());
+        }
+
         private void OnEnable()
         {
             if (_gameInput is null)
@@ -27,11 +32,6 @@ namespace Arkanoid
         private void OnDisable()
         {
             _gameInput.SecondPlayerGameplay.Disable();
-        }
-
-        public void OnMove(InputAction.CallbackContext context)
-        {
-            MoveInputChanged?.Invoke(context.ReadValue<Vector2>());
         }
     }
 }

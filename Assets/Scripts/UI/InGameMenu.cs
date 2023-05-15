@@ -1,31 +1,41 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 namespace Arkanoid
 {
     public class InGameMenu : MonoBehaviour
     {
-        [SerializeField]
-        private Game _game;
+        //[SerializeField]
+        //private Game _game;
 
-        public void Close()
-        {
+        [field: SerializeField]
+        public Button ResumeGameButton { get; set; }
 
-        }
+        [field: SerializeField]
+        public Button RestartLevelButton { get; set; }
 
-        public void ResumeGame()
-        {
-            _game.Resume();
-            Close();
-        }
+        [field: SerializeField]
+        public Button ExitButton { get; set; }
 
-        public void RestartLevel()
-        {
-            _game.RestartLevel();
-        }
+        //public void Close()
+        //{
+        //    gameObject.SetActive(false);
+        //}
 
-        public void Exit()
-        {
-            _game.Exit();
-        }
+        //public void ResumeGame()
+        //{
+        //    _game.Resume();
+        //    Close();
+        //}
+
+        //public void RestartLevel()
+        //{
+        //    _game.RestartLevel();
+        //}
+
+        //public void Exit()
+        //{
+        //    _game.Exit();
+        //}
     }
 }

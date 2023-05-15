@@ -5,10 +5,10 @@ namespace Arkanoid
 {
     public class MainMenu : MonoBehaviour
     {
+        private const string GameSceneName = "Game";
+        
         [SerializeField]
         private SceneLoader _sceneLoader;
-
-        private const string GameSceneName = "Game";
 
         public void StartNewGame()
         {
