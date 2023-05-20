@@ -51,7 +51,7 @@ namespace Arkanoid
 
         private void OnDisable()
         {
-            _gameInput.SecondPlayerGameplay.Disable();
+            _gameInput.FirstPlayerGameplay.Disable();
         }
     }
 }

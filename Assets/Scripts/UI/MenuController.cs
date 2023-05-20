@@ -18,6 +18,7 @@ namespace Arkanoid
 
         public void ShowInGameMenu()
         {
+            Game.Pause();
             _inGameMenu.ResumeGameButton.onClick.AddListener(Game.Resume);
             _inGameMenu.ResumeGameButton.onClick.AddListener(CloseInGameMenu);
             _inGameMenu.RestartLevelButton.onClick.AddListener(Game.RestartLevel);

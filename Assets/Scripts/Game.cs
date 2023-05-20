@@ -25,7 +25,10 @@ namespace Arkanoid
         private IPauseGameInputReader _pauseGameInput;
 
         [SerializeField]
-        private Transform _mainPlayerTransform;
+        private PlayerMover _firstPlayerTransform;
+
+        [SerializeField]
+        private PlayerMover _secondPlayerTransform;
 
         private int _health;
 
@@ -42,12 +45,19 @@ namespace Arkanoid
 
         public void Pause()
         {
+            _firstPlayerTransform.enabled = false;
+            _firstPlayerTransform.StopMovement();
+            _secondPlayerTransform.enabled = false;
+            _secondPlayerTransform.StopMovement();
 
+            _ball.enabled = false;
         }
 
         public void Resume()
         {
-
+            _firstPlayerTransform.enabled = true;
+            _secondPlayerTransform.enabled = true;
+            _ball.enabled = true;
         }
 
         public void RestartLevel()
@@ -86,7 +96,7 @@ namespace Arkanoid
             _menuController.Game = this;
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             _releaseBallInput.ReleaseBallInputPerformed -= OnReleaseBall;
             _pauseGameInput.PauseGameInputPerformed -= OnPauseGame;
@@ -124,8 +134,8 @@ namespace Arkanoid
 
         private void MoveBallToStartPosition()
         {
-            _ball.transform.position = _mainPlayerTransform.position + _gameData.BallSpawnPositionOffset;
-            _ball.transform.SetParent(_mainPlayerTransform, true);
+            _ball.transform.position = _firstPlayerTransform.transform.position + _gameData.BallSpawnPositionOffset;
+            _ball.transform.SetParent(_firstPlayerTransform.transform, true);
             
             _ball.StopMoving();
             _ball.SetSpeedToStartValue();

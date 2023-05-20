@@ -676,7 +676,8 @@ MonoBehaviour:
   _gameData: {fileID: 11400000, guid: 8946a20fe58bd1a4b98eee40d7be5307, type: 2}
   _releaseBallInputReader: {fileID: 11400000, guid: 2a3ddbc3fffab404f92f9b3de58a5fb1, type: 2}
   _pauseGameInputReader: {fileID: 11400000, guid: 2a3ddbc3fffab404f92f9b3de58a5fb1, type: 2}
-  _mainPlayerTransform: {fileID: 466182073}
+  _firstPlayerTransform: {fileID: 466182074}
+  _secondPlayerTransform: {fileID: 574347615}
   _cubeSpawner: {fileID: 1374167863}
 --- !u!4 &794776809
 Transform:
